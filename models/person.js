@@ -1,6 +1,6 @@
 const sequelize = require("../configs/dbConfig");
 const {Sequelize} = require("sequelize");
-
+const Pet = require("./pet");
 
 const Person = sequelize.define("person",{
     
@@ -21,5 +21,11 @@ const Person = sequelize.define("person",{
 });
 
 Person.sync({alter : true})
+
+Person.hasMany(Pet,{
+    foreignKey: "personId"
+})
+Pet.belongsTo(Person)
+
 module.exports = Person
 

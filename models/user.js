@@ -2,7 +2,7 @@ const sequelize = require("../configs/dbConfig");
 const {Sequelize} = require("sequelize");
 
 const User = sequelize.define("user",{
-    
+
     id:{
         type: Sequelize.INTEGER,
         primaryKey : true,
@@ -13,9 +13,15 @@ const User = sequelize.define("user",{
     },
     address:{
         type: Sequelize.STRING
+    },
+    username:{
+        type: Sequelize.STRING
+    },
+    password:{
+        type: Sequelize.STRING
     }
 });
-
-User.sync()
+        
+User.sync({alter: true})
 module.exports = User
 

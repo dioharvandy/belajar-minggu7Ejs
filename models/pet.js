@@ -1,6 +1,6 @@
 const sequelize = require("../configs/dbConfig");
 const {Sequelize} = require("sequelize");
-const Person = require("./person");
+//const Person = require("./person");
 
 const Pet = sequelize.define("pet",{
     
@@ -14,13 +14,14 @@ const Pet = sequelize.define("pet",{
     },
     type:{
         type: Sequelize.STRING
+    },
+    personId:{
+        type: Sequelize.INTEGER
     }
 });
 
-Pet.sync({alter: true})
 
-Person.hasMany(Pet)
-Pet.belongsTo(Person)
+Pet.sync()
 
 module.exports = Pet
 
